@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bảng đơn giản trong HTML | Thực Hành HTML Table</title>
+  <title>Gộp ô trong bảng | Thực Hành Rowspan & Colspan HTML</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -60,7 +60,7 @@
     .brand-icon {
       width: 40px;
       height: 40px;
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -160,7 +160,7 @@
     }
 
     .raw-browser-preview th {
-      padding: 6px 12px;
+      padding: 8px 14px;
       background-color: transparent;
       color: #000000;
       font-weight: bold;
@@ -168,7 +168,7 @@
     }
 
     .raw-browser-preview td {
-      padding: 6px 12px;
+      padding: 8px 14px;
       color: #000000;
       text-align: left;
     }
@@ -187,7 +187,7 @@
     .modern-table th, .modern-table td {
       padding: 0.9rem 1.25rem;
       text-align: left;
-      border-bottom: 1px solid var(--border-color);
+      border: 1px solid var(--border-color);
     }
 
     .modern-table th {
@@ -203,8 +203,18 @@
       background: rgba(255, 255, 255, 0.03);
     }
 
-    .modern-table td {
-      font-size: 0.95rem;
+    .highlight-rowspan {
+      background: rgba(56, 189, 248, 0.1) !important;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    .highlight-colspan {
+      background: rgba(239, 68, 68, 0.1) !important;
+      color: #f87171;
+      text-align: center !important;
+      font-weight: 700;
+      font-style: italic;
     }
 
     .code-container {
@@ -242,7 +252,7 @@
 
     .tag-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1rem;
       margin-top: 1rem;
     }
@@ -282,10 +292,10 @@
   <header>
     <div class="header-container">
       <div class="brand">
-        <div class="brand-icon">📊</div>
+        <div class="brand-icon">🗓️</div>
         <div class="brand-text">
-          <h1>HTML Table Practice</h1>
-          <p>TẠO BẢNG ĐƠN GIẢN VỚI TIÊU ĐỀ VÀ DỮ LIỆU</p>
+          <h1>HTML Table: Rowspan & Colspan</h1>
+          <p>THỰC HÀNH GỘP Ô TRONG BẢNG THỜI KHÓA BIỂU</p>
         </div>
       </div>
       <div>
@@ -297,37 +307,35 @@
   <main class="container">
     <section class="hero-banner">
       <span class="badge">✓ Đã Hoàn Thành Thực Hành</span>
-      <h2 class="hero-title">[Thực hành] Tạo bảng đơn giản với tiêu đề và dữ liệu</h2>
-      <p class="hero-desc">Luyện tập tạo bảng cơ bản trong HTML sử dụng các thẻ <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code> và thuộc tính <code>border="1"</code> để hiển thị danh sách học sinh có cấu trúc.</p>
+      <h2 class="hero-title">[Thực hành] Gộp ô trong bảng với rowspan và colspan</h2>
+      <p class="hero-desc">Luyện tập sử dụng thuộc tính <code>rowspan="2"</code> để gộp 2 hàng thành một ô và <code>colspan="2"</code> để gộp 2 cột thành một ô trong bảng thời khóa biểu.</p>
     </section>
 
     <!-- SECTION 1: KẾT QUẢ THỰC TẾ THEO ĐỀ BÀI -->
     <div class="card">
-      <h3 class="card-title">🖥️ 1. Màn Hình Hiển Thị Nguyên Bản Trên Trình Duyệt Web (Đề Bài Yêu Cầu)</h3>
+      <h3 class="card-title">🖥️ 1. Màn Hình Hiển Thị Nguyên Bản Trên Trình Duyệt Web</h3>
       <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">Kết quả render chính xác của đoạn mã HTML cơ bản với font chữ Serif và đường viền <code>border="1"</code>:</p>
       
       <div class="raw-browser-preview">
-        <h2>Danh sách học sinh</h2>
+        <h2>Thời khóa biểu</h2>
         <table border="1">
           <tr>
-            <th>Họ và Tên</th>
-            <th>Tuổi</th>
-            <th>Lớp</th>
+            <th>Thứ</th>
+            <th>Môn học</th>
+            <th>Giáo viên</th>
           </tr>
           <tr>
-            <td>Nguyễn Văn A</td>
-            <td>15</td>
-            <td>10A1</td>
+            <td rowspan="2">Thứ Hai</td>
+            <td>Toán</td>
+            <td>Thầy Nam</td>
           </tr>
           <tr>
-            <td>Trần Thị B</td>
-            <td>16</td>
-            <td>11B2</td>
+            <td>Văn</td>
+            <td>Cô Hạnh</td>
           </tr>
           <tr>
-            <td>Lê Văn C</td>
-            <td>17</td>
-            <td>12C3</td>
+            <td>Thứ Ba</td>
+            <td colspan="2">Nghỉ học</td>
           </tr>
         </table>
       </div>
@@ -335,32 +343,30 @@
 
     <!-- SECTION 2: BẢNG NÂNG CAO STYLED BẰNG CSS -->
     <div class="card">
-      <h3 class="card-title">✨ 2. Phiên Bản Nâng Cao (Áp Dụng CSS Hiện Đại)</h3>
-      <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">Cùng cấu trúc dữ liệu nhưng được chuẩn hóa với CSS: bo góc, border-collapse, màu tương phản và hiệu ứng hover:</p>
+      <h3 class="card-title">✨ 2. Minh Họa Cơ Chế Gộp Ô Trực Quan (Styled CSS)</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">Được tô màu trực quan: <span style="color: #38bdf8; font-weight:700;">Ô xanh dương = rowspan="2" (Gộp 2 hàng)</span> | <span style="color: #f87171; font-weight:700;">Ô đỏ = colspan="2" (Gộp 2 cột)</span>:</p>
       
       <table class="modern-table">
         <thead>
           <tr>
-            <th>Họ và Tên</th>
-            <th>Tuổi</th>
-            <th>Lớp</th>
+            <th>Thứ</th>
+            <th>Môn học</th>
+            <th>Giáo viên</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Nguyễn Văn A</strong></td>
-            <td>15</td>
-            <td><span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 2px 8px; border-radius: 4px; font-weight:600;">10A1</span></td>
+            <td rowspan="2" class="highlight-rowspan">Thứ Hai <br><small style="font-size:0.75rem; color:#94a3b8;">(rowspan="2")</small></td>
+            <td>Toán</td>
+            <td>Thầy Nam</td>
           </tr>
           <tr>
-            <td><strong>Trần Thị B</strong></td>
-            <td>16</td>
-            <td><span style="background: rgba(99, 102, 241, 0.15); color: #818cf8; padding: 2px 8px; border-radius: 4px; font-weight:600;">11B2</span></td>
+            <td>Văn</td>
+            <td>Cô Hạnh</td>
           </tr>
           <tr>
-            <td><strong>Lê Văn C</strong></td>
-            <td>17</td>
-            <td><span style="background: rgba(34, 197, 94, 0.15); color: #4ade80; padding: 2px 8px; border-radius: 4px; font-weight:600;">12C3</span></td>
+            <td>Thứ Ba</td>
+            <td colspan="2" class="highlight-colspan">Nghỉ học (colspan="2" - Gộp cột Môn học & Giáo viên)</td>
           </tr>
         </tbody>
       </table>
@@ -377,30 +383,28 @@
 &lt;html&gt;
     &lt;head&gt;
         &lt;meta charset="utf-8"&gt;
-        &lt;title&gt;Bảng đơn giản trong HTML&lt;/title&gt;
+        &lt;title&gt;Gộp ô trong bảng&lt;/title&gt;
     &lt;/head&gt;
     &lt;body&gt;
-        &lt;h2&gt;Danh sách học sinh&lt;/h2&gt;
+        &lt;h2&gt;Thời khóa biểu&lt;/h2&gt;
         &lt;table border="1"&gt;
             &lt;tr&gt;
-                &lt;th&gt;Họ và Tên&lt;/th&gt;
-                &lt;th&gt;Tuổi&lt;/th&gt;
-                &lt;th&gt;Lớp&lt;/th&gt;
+                &lt;th&gt;Thứ&lt;/th&gt;
+                &lt;th&gt;Môn học&lt;/th&gt;
+                &lt;th&gt;Giáo viên&lt;/th&gt;
             &lt;/tr&gt;
             &lt;tr&gt;
-                &lt;td&gt;Nguyễn Văn A&lt;/td&gt;
-                &lt;td&gt;15&lt;/td&gt;
-                &lt;td&gt;10A1&lt;/td&gt;
+                &lt;td rowspan="2"&gt;Thứ Hai&lt;/td&gt;
+                &lt;td&gt;Toán&lt;/td&gt;
+                &lt;td&gt;Thầy Nam&lt;/td&gt;
             &lt;/tr&gt;
             &lt;tr&gt;
-                &lt;td&gt;Trần Thị B&lt;/td&gt;
-                &lt;td&gt;16&lt;/td&gt;
-                &lt;td&gt;11B2&lt;/td&gt;
+                &lt;td&gt;Văn&lt;/td&gt;
+                &lt;td&gt;Cô Hạnh&lt;/td&gt;
             &lt;/tr&gt;
             &lt;tr&gt;
-                &lt;td&gt;Lê Văn C&lt;/td&gt;
-                &lt;td&gt;17&lt;/td&gt;
-                &lt;td&gt;12C3&lt;/td&gt;
+                &lt;td&gt;Thứ Ba&lt;/td&gt;
+                &lt;td colspan="2"&gt;Nghỉ học&lt;/td&gt;
             &lt;/tr&gt;
         &lt;/table&gt;
     &lt;/body&gt;
@@ -408,25 +412,21 @@
       </div>
     </div>
 
-    <!-- SECTION 4: GIẢI THÍCH CHI TIẾT CÁC THẺ -->
+    <!-- SECTION 4: GIẢI THÍCH CHI TIẾT THUỘC TÍNH -->
     <div class="card">
-      <h3 class="card-title">💡 4. Ý Nghĩa & Vai Trò Các Thẻ HTML Table</h3>
+      <h3 class="card-title">💡 4. Bản Chất Kỹ Thuật: rowspan vs colspan</h3>
       <div class="tag-grid">
         <div class="tag-item">
-          <div class="tag-name">&lt;table&gt;</div>
-          <div class="tag-desc">Thẻ phần tử cha định nghĩa toàn bộ bảng dữ liệu. Thuộc tính <code>border="1"</code> giúp hiển thị viền đơn của bảng.</div>
+          <div class="tag-name">rowspan="N" (Gộp hàng)</div>
+          <div class="tag-desc">
+            Cho phép một ô trải dài xuống <code>N</code> hàng liên tiếp. Ô này chiếm vị trí của các ô tương ứng ở các hàng phía dưới, vì vậy các hàng <code>&lt;tr&gt;</code> phía dưới cần <strong>bỏ bớt 1 ô</strong> để không làm xô lệch cấu trúc bảng.
+          </div>
         </div>
         <div class="tag-item">
-          <div class="tag-name">&lt;tr&gt; (Table Row)</div>
-          <div class="tag-desc">Tạo một hàng ngang trong bảng. Mỗi hàng chứa các ô tiêu đề (th) hoặc ô dữ liệu (td).</div>
-        </div>
-        <div class="tag-item">
-          <div class="tag-name">&lt;th&gt; (Table Header)</div>
-          <div class="tag-desc">Ô tiêu đề cột. Mặc định trình duyệt sẽ hiển thị văn bản <strong>in đậm</strong> và căn giữa (center).</div>
-        </div>
-        <div class="tag-item">
-          <div class="tag-name">&lt;td&gt; (Table Data)</div>
-          <div class="tag-desc">Ô chứa dữ liệu thông thường. Mặc định văn bản hiển thị bình thường và căn lề trái (left).</div>
+          <div class="tag-name">colspan="N" (Gộp cột)</div>
+          <div class="tag-desc">
+            Cho phép một ô trải rộng sang ngang <code>N</code> cột liền kề trong cùng một hàng. Ô này chiếm chỗ của các ô cùng hàng, giúp thể hiện thông tin chung (như trạng thái <em>Nghỉ học</em> cho cả 2 cột Môn học & Giáo viên).
+          </div>
         </div>
       </div>
     </div>

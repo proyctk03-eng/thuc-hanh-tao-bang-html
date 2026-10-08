@@ -63,7 +63,7 @@ def add_header_footer(doc):
         hdr = s.header
         hp = hdr.paragraphs[0]
         hp.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-        hr = hp.add_run("Báo Cáo: Tạo Bảng Đơn Giản Với Tiêu Đề Và Dữ Liệu Trong HTML")
+        hr = hp.add_run("Báo Cáo: Gộp Ô Trong Bảng Với Rowspan Và Colspan")
         hr.font.name = "Arial"
         hr.font.size = Pt(8.5)
         hr.font.color.rgb = RGBColor(148, 163, 184)
@@ -72,7 +72,7 @@ def add_header_footer(doc):
         ftr = s.footer
         fp = ftr.paragraphs[0]
         fp.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        fr = fp.add_run("Học viên: proyctk03-eng  |  Bài Thực Hành HTML Table Cơ Bản")
+        fr = fp.add_run("Học viên: proyctk03-eng  |  Thực Hành HTML Table Nâng Cao")
         fr.font.name = "Arial"
         fr.font.size = Pt(8.5)
         fr.font.color.rgb = RGBColor(148, 163, 184)
@@ -87,7 +87,7 @@ def build_report():
     
     p_inst = doc.add_paragraph()
     p_inst.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r_inst = p_inst.add_run("BÀI TẬP THỰC HÀNH LẬP TRÌNH WEB\nCẤU TRÚC DỮ LIỆU BẢNG VỚI HTML TABLE")
+    r_inst = p_inst.add_run("BÀI TẬP THỰC HÀNH LẬP TRÌNH WEB\nCẤU TRÚC BẢNG NÂNG CAO VỚI ROWSPAN VÀ COLSPAN")
     r_inst.bold = True
     r_inst.font.name = "Arial"
     r_inst.font.size = Pt(12)
@@ -102,7 +102,7 @@ def build_report():
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_title.paragraph_format.space_before = Pt(36)
     p_title.paragraph_format.space_after = Pt(12)
-    r_title = p_title.add_run("BÁO CÁO THỰC HÀNH\nTẠO BẢNG ĐƠN GIẢN VỚI TIÊU ĐỀ\nVÀ DỮ LIỆU TRONG HTML")
+    r_title = p_title.add_run("BÁO CÁO THỰC HÀNH\nGỘP Ô TRONG BẢNG VỚI\nROWSPAN VÀ COLSPAN")
     r_title.bold = True
     r_title.font.name = "Arial"
     r_title.font.size = Pt(21)
@@ -111,7 +111,7 @@ def build_report():
     p_sub = doc.add_paragraph()
     p_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_sub.paragraph_format.space_after = Pt(40)
-    r_sub = p_sub.add_run("Thực hành xây dựng bảng danh sách học sinh (Họ và Tên, Tuổi, Lớp) bằng các thẻ <table>, <tr>, <th>, <td> và chụp màn hình kết quả trình duyệt")
+    r_sub = p_sub.add_run("Thực hành xây dựng thời khóa biểu kết hợp gộp 2 hàng (rowspan=\"2\") và gộp 2 cột (colspan=\"2\") trên trình duyệt web")
     r_sub.font.name = "Arial"
     r_sub.font.size = Pt(11.5)
     r_sub.font.color.rgb = RGBColor(51, 65, 85)
@@ -124,11 +124,11 @@ def build_report():
     tbl_meta.columns[1].width = Inches(3.8)
     
     meta_info = [
-        ("Chủ đề bài học:", "Tạo bảng HTML hiển thị danh sách học sinh"),
-        ("Các thẻ trọng tâm:", "<table>, <tr>, <th>, <td>, thuộc tính border='1'"),
-        ("Các cột dữ liệu:", "Họ và Tên, Tuổi, Lớp"),
+        ("Chủ đề bài học:", "Gộp ô trong bảng với rowspan và colspan"),
+        ("Các thuộc tính trọng tâm:", "rowspan=\"2\" (gộp hàng), colspan=\"2\" (gộp cột), border=\"1\""),
+        ("Bài toán ứng dụng:", "Bảng Thời khóa biểu (Thứ, Môn học, Giáo viên)"),
         ("Tài khoản sinh viên:", "proyctk03-eng (GitHub)"),
-        ("Định dạng nộp bài:", "File .docx (Dung lượng ≤ 2 MB theo quy định)")
+        ("Định dạng nộp bài:", "File PDF (Dung lượng ≤ 2 MB theo yêu cầu)")
     ]
     
     for i, (k, v) in enumerate(meta_info):
@@ -151,7 +151,7 @@ def build_report():
         r1.font.name = "Arial"
         r1.font.size = Pt(10)
         r1.font.color.rgb = RGBColor(15, 23, 42)
-        if "proyctk03-eng" in v or "docx" in v:
+        if "proyctk03-eng" in v or "PDF" in v:
             r1.bold = True
 
     p_date = doc.add_paragraph()
@@ -176,10 +176,10 @@ def build_report():
     p_desc = doc.add_paragraph()
     p_desc.paragraph_format.space_after = Pt(8)
     r_d = p_desc.add_run(
-        "Mục đích cốt lõi của bài học là giúp sinh viên nắm vững cách tổ chức dữ liệu dạng bảng lưới hai chiều trong HTML. "
-        "Bằng cách sử dụng các thẻ <table>, <tr>, <th>, <td>, người học rèn luyện kỹ năng định nghĩa cấu trúc hàng - cột, "
-        "phân biệt rõ ô tiêu đề (Header cell) và ô dữ liệu (Data cell), đồng thời nắm bắt cách thức trình duyệt web "
-        "dựng hình và hiển thị nội dung có đường viền."
+        "Mục đích của bài học là giúp sinh viên nắm vững kỹ thuật gộp ô trong bảng HTML bằng hai thuộc tính cốt lõi: "
+        "rowspan (gộp nhiều hàng thành một) và colspan (gộp nhiều cột thành một). "
+        "Việc nắm bắt chính xác cơ chế này giúp người lập trình xây dựng được các bảng biểu phức tạp trong thực tế "
+        "như thời khóa biểu, hóa đơn bán hàng, lịch làm việc hoặc báo cáo tài chính mà không làm biến dạng cấu trúc lưới của bảng."
     )
     r_d.font.name = "Arial"
     r_d.font.size = Pt(10.5)
@@ -187,10 +187,10 @@ def build_report():
     create_callout_box(
         doc,
         "Yêu cầu đầu ra theo hướng dẫn nộp bài:\n"
-        "• Hoàn thành bảng danh sách học sinh bằng HTML theo đúng yêu cầu bài toán.\n"
-        "• Bảng hiển thị chính xác 3 cột: Họ và Tên, Tuổi, Lớp.\n"
-        "• Dữ liệu 3 học sinh mẫu: Nguyễn Văn A (15, 10A1), Trần Thị B (16, 11B2), Lê Văn C (17, 12C3).\n"
-        "• Chụp ảnh màn hình kết quả hiển thị trên trình duyệt web và đính kèm đầy đủ vào báo cáo docx.",
+        "• Hoàn thành bảng thời khóa biểu bằng HTML theo đúng yêu cầu bài toán.\n"
+        "• Sử dụng đúng rowspan='2' cho ô 'Thứ Hai' để gộp 2 hàng Toán và Văn.\n"
+        "• Sử dụng đúng colspan='2' cho ô 'Nghỉ học' để gộp 2 cột Môn học và Giáo viên tại Thứ Ba.\n"
+        "• Chụp ảnh màn hình kết quả hiển thị trên trình duyệt web và xuất bản sang định dạng file PDF (≤ 2 MB).",
         title="TIÊU CHUẨN NỘP BÀI",
         hex_border="0284C7",
         hex_bg="F0F9FF"
@@ -205,17 +205,16 @@ def build_report():
     r_h2.bold = True
 
     steps = [
-        ("Bước 1: Khởi tạo cấu trúc tài liệu HTML5",
-         "Tạo file index.html với khai báo <!DOCTYPE html> xác định phiên bản HTML5. "
-         "Thẻ <head> chứa <meta charset=\"utf-8\"> hỗ trợ font tiếng Việt có dấu và thẻ <title> đặt tiêu đề tab trình duyệt là 'Bảng đơn giản trong HTML'."),
-        ("Bước 2: Tạo tiêu đề h2 và bảng danh sách học sinh",
-         "Thêm thẻ <h2>Danh sách học sinh</h2> để tạo tiêu đề nổi bật phía trên bảng.\n"
-         "Sử dụng thẻ <table border=\"1\"> để khởi tạo bảng có đường viền đơn bao quanh các ô.\n"
-         "  • Hàng thứ nhất: <tr > chứa 3 thẻ tiêu đề <th>Họ và Tên</th>, <th>Tuổi</th>, <th>Lớp</th>.\n"
-         "  • Ba hàng dữ liệu kế tiếp: Mỗi hàng <tr> chứa 3 thẻ <td> tương ứng với họ tên, tuổi và lớp của từng học sinh."),
+        ("Bước 1: Khởi tạo cấu trúc tài liệu HTML cơ bản",
+         "Tạo file index.html với khai báo <!DOCTYPE html>, thẻ <html>, thẻ <head> chứa meta UTF-8 và thẻ <title> đặt là 'Gộp ô trong bảng'."),
+        ("Bước 2: Xây dựng bảng thời khóa biểu với ô gộp hàng và cột",
+         "Sử dụng thẻ <h2>Thời khóa biểu</h2> và thẻ <table border=\"1\">.\n"
+         "  • Hàng tiêu đề <tr>: Chứa 3 thẻ <th>: Thứ, Môn học, Giáo viên.\n"
+         "  • Hàng dữ liệu 1: Khai báo <td rowspan=\"2\">Thứ Hai</td> để gộp 2 hàng, kèm theo môn Toán và Thầy Nam.\n"
+         "  • Hàng dữ liệu 2: Do ô Thứ Hai đã chiếm vị trí cột 1, hàng này CHỈ khai báo 2 ô là Văn và Cô Hạnh.\n"
+         "  • Hàng dữ liệu 3: Khai báo ô 'Thứ Ba' và ô <td colspan=\"2\">Nghỉ học</td> để chiếm trọn 2 cột còn lại."),
         ("Bước 3: Chạy chương trình và kiểm tra trên trình duyệt",
-         "Lưu file index.html và mở trực tiếp bằng trình duyệt web (Google Chrome / Microsoft Edge). "
-         "Kiểm tra tính toàn vẹn của bảng, đảm bảo các tiêu đề in đậm và dữ liệu căn chỉnh chính xác.")
+         "Mở file index.html bằng trình duyệt web để kiểm tra trực quan. Đảm bảo ô 'Thứ Hai' trải dài 2 hàng và ô 'Nghỉ học' trải rộng 2 cột.")
     ]
 
     for title, content in steps:
@@ -249,30 +248,28 @@ def build_report():
         "<html>\n"
         "    <head>\n"
         "        <meta charset=\"utf-8\">\n"
-        "        <title>Bảng đơn giản trong HTML</title>\n"
+        "        <title>Gộp ô trong bảng</title>\n"
         "    </head>\n"
         "    <body>\n"
-        "        <h2>Danh sách học sinh</h2>\n"
+        "        <h2>Thời khóa biểu</h2>\n"
         "        <table border=\"1\">\n"
         "            <tr>\n"
-        "                <th>Họ và Tên</th>\n"
-        "                <th>Tuổi</th>\n"
-        "                <th>Lớp</th>\n"
+        "                <th>Thứ</th>\n"
+        "                <th>Môn học</th>\n"
+        "                <th>Giáo viên</th>\n"
         "            </tr>\n"
         "            <tr>\n"
-        "                <td>Nguyễn Văn A</td>\n"
-        "                <td>15</td>\n"
-        "                <td>10A1</td>\n"
+        "                <td rowspan=\"2\">Thứ Hai</td>\n"
+        "                <td>Toán</td>\n"
+        "                <td>Thầy Nam</td>\n"
         "            </tr>\n"
         "            <tr>\n"
-        "                <td>Trần Thị B</td>\n"
-        "                <td>16</td>\n"
-        "                <td>11B2</td>\n"
+        "                <td>Văn</td>\n"
+        "                <td>Cô Hạnh</td>\n"
         "            </tr>\n"
         "            <tr>\n"
-        "                <td>Lê Văn C</td>\n"
-        "                <td>17</td>\n"
-        "                <td>12C3</td>\n"
+        "                <td>Thứ Ba</td>\n"
+        "                <td colspan=\"2\">Nghỉ học</td>\n"
         "            </tr>\n"
         "        </table>\n"
         "    </body>\n"
@@ -285,7 +282,7 @@ def build_report():
 
     doc.add_paragraph().paragraph_format.space_after = Pt(10)
 
-    # 3. ẢNH CHỤP MÀN HÌNH KẾT QUẢ TRÊN TRÌNH DUYỆT (HƯỚNG DẪN NỘP BÀI)
+    # 3. ẢNH CHỤP MÀN HÌNH KẾT QUẢ TRÊN TRÌNH DUYỆT
     p_h3 = doc.add_heading(level=1)
     r_h3 = p_h3.add_run("3. ẢNH CHỤP MÀN HÌNH KẾT QUẢ HIỂN THỊ TRÊN TRÌNH DUYỆT")
     r_h3.font.name = "Arial"
@@ -295,9 +292,8 @@ def build_report():
 
     p_scr_desc = doc.add_paragraph()
     r_sd = p_scr_desc.add_run(
-        "Theo yêu cầu trong phần 'HƯỚNG DẪN NỘP BÀI': Học viên chụp màn hình kết quả hiển thị của file index.html "
-        "khi mở trên trình duyệt web, đảm bảo hiển thị rõ tiêu đề, đường viền border='1', hàng tiêu đề in đậm (th) "
-        "và 3 hàng dữ liệu học sinh (td):"
+        "Minh chứng kết quả thực thi file index.html trên trình duyệt web, thể hiện rõ đường viền border='1', "
+        "ô 'Thứ Hai' gộp chính xác 2 hàng và ô 'Nghỉ học' gộp chính xác 2 cột:"
     )
     r_sd.font.name = "Arial"
     r_sd.font.size = Pt(10)
@@ -314,7 +310,7 @@ def build_report():
         p_cap1 = doc.add_paragraph()
         p_cap1.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_cap1.paragraph_format.space_after = Pt(12)
-        r_cap1 = p_cap1.add_run("Hình 1: Ảnh chụp màn hình trình duyệt web hiển thị bảng Danh sách học sinh theo đúng yêu cầu đề bài")
+        r_cap1 = p_cap1.add_run("Hình 1: Ảnh chụp màn hình trình duyệt hiển thị bảng Thời khóa biểu với rowspan='2' và colspan='2'")
         r_cap1.font.name = "Arial"
         r_cap1.font.size = Pt(9)
         r_cap1.font.italic = True
@@ -322,25 +318,25 @@ def build_report():
 
     doc.add_page_break()
 
-    # 4. GIẢI THÍCH CHI TIẾT Ý NGHĨA CÁC THẺ
+    # 4. PHÂN TÍCH CƠ CHẾ KỸ THUẬT ROWSPAN & COLSPAN
     p_h4 = doc.add_heading(level=1)
-    r_h4 = p_h4.add_run("4. GIẢI THÍCH CHI TIẾT CẤU TRÚC VÀ Ý NGHĨA CÁC THẺ")
+    r_h4 = p_h4.add_run("4. PHÂN TÍCH CƠ CHẾ KỸ THUẬT: ROWSPAN VS COLSPAN")
     r_h4.font.name = "Arial"
     r_h4.font.size = Pt(15)
     r_h4.font.color.rgb = RGBColor(15, 23, 42)
     r_h4.bold = True
 
-    # Tag explanation table
-    tbl_tags = doc.add_table(rows=6, cols=3)
-    tbl_tags.alignment = WD_TABLE_ALIGNMENT.CENTER
-    tbl_tags.autofit = False
-    tbl_tags.columns[0].width = Inches(1.5)
-    tbl_tags.columns[1].width = Inches(1.8)
-    tbl_tags.columns[2].width = Inches(3.2)
+    # Comparison table
+    tbl_cmp = doc.add_table(rows=6, cols=3)
+    tbl_cmp.alignment = WD_TABLE_ALIGNMENT.CENTER
+    tbl_cmp.autofit = False
+    tbl_cmp.columns[0].width = Inches(1.5)
+    tbl_cmp.columns[1].width = Inches(2.5)
+    tbl_cmp.columns[2].width = Inches(2.5)
 
-    headers = ["Thẻ / Thuộc Tính", "Tên Đầy Đủ", "Ý Nghĩa & Chức Năng Cốt Lõi"]
+    headers = ["Tiêu Chí So Sánh", "Thuộc Tính ROWSPAN", "Thuộc Tính COLSPAN"]
     for j, h in enumerate(headers):
-        c = tbl_tags.cell(0, j)
+        c = tbl_cmp.cell(0, j)
         set_cell_background(c, "1E293B")
         set_cell_margins(c, 80, 80, 100, 100)
         p = c.paragraphs[0]
@@ -350,18 +346,18 @@ def build_report():
         r.font.size = Pt(9.5)
         r.font.color.rgb = RGBColor(255, 255, 255)
 
-    tags_data = [
-        ("<table>", "Table Element", "Thẻ bao bọc cấp cao nhất, thông báo cho trình duyệt đây là cấu trúc bảng dữ liệu."),
-        ("border=\"1\"", "Border Attribute", "Thuộc tính quy định độ dày viền của bảng (1px). Nếu không có, bảng sẽ ẩn viền."),
-        ("<tr>", "Table Row", "Định nghĩa một hàng ngang trong bảng. Chứa các ô tiêu đề (th) hoặc ô dữ liệu (td)."),
-        ("<th>", "Table Header", "Ô tiêu đề cột. Mặc định trình duyệt sẽ tự động in đậm và căn giữa nội dung văn bản."),
-        ("<td>", "Table Data", "Ô chứa dữ liệu thông thường. Mặc định trình duyệt hiển thị chữ thường và căn lề trái.")
+    cmp_data = [
+        ("Hướng gộp ô", "Gộp theo chiều DỌC (chiếm nhiều hàng liên tiếp)", "Gộp theo chiều NGANG (chiếm nhiều cột liên tiếp)"),
+        ("Cú pháp trong bài", "<td rowspan=\"2\">Thứ Hai</td>", "<td colspan=\"2\">Nghỉ học</td>"),
+        ("Tác động lên hàng sau", "Các hàng <tr> phía dưới PHẢI giảm bớt số thẻ <td>", "Không ảnh hưởng tới các hàng <tr> khác"),
+        ("Số ô chiếm dụng", "Chiếm 1 cột x 2 hàng = 2 vị trí ô theo trục dọc", "Chiếm 2 cột x 1 hàng = 2 vị trí ô theo trục ngang"),
+        ("Ứng dụng thực tế", "Gộp thứ trong tuần, gộp danh mục sản phẩm lớn", "Gộp tiêu đề nhóm, dòng ghi chú tổng hợp, nghỉ học")
     ]
 
-    for i, (t_tag, t_full, t_desc) in enumerate(tags_data):
+    for i, (crit, r_val, c_val) in enumerate(cmp_data):
         bg = "FFFFFF" if i % 2 == 0 else "F8FAFC"
-        for j, val in enumerate([t_tag, t_full, t_desc]):
-            c = tbl_tags.cell(i + 1, j)
+        for j, val in enumerate([crit, r_val, c_val]):
+            c = tbl_cmp.cell(i + 1, j)
             set_cell_background(c, bg)
             set_cell_margins(c, 70, 70, 100, 100)
             p = c.paragraphs[0]
@@ -371,7 +367,6 @@ def build_report():
             r.font.color.rgb = RGBColor(15, 23, 42)
             if j == 0:
                 r.bold = True
-                r.font.name = "Consolas"
 
     doc.add_paragraph().paragraph_format.space_after = Pt(8)
 
@@ -387,30 +382,20 @@ def build_report():
         p_cap2 = doc.add_paragraph()
         p_cap2.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_cap2.paragraph_format.space_after = Pt(12)
-        r_cap2 = p_cap2.add_run("Hình 2: Sơ đồ mối quan hệ phân tầng cha - con giữa các thẻ trong bảng HTML Table")
+        r_cap2 = p_cap2.add_run("Hình 2: Sơ đồ phân tích nguyên lý và quy tắc bảo toàn số lượng ô khi dùng rowspan và colspan")
         r_cap2.font.name = "Arial"
         r_cap2.font.size = Pt(9)
         r_cap2.font.italic = True
         r_cap2.font.color.rgb = RGBColor(100, 116, 139)
 
-    # 5. MỞ RỘNG: BẢNG NÂNG CAO VỚI CSS
+    # 5. MỞ RỘNG: THỜI KHÓA BIỂU NÂNG CAO VỚI CSS
     p_h5 = doc.add_heading(level=1)
-    r_h5 = p_h5.add_run("5. MỞ RỘNG: NÂNG CẤP GIAO DIỆN BẢNG BẰNG CSS")
+    r_h5 = p_h5.add_run("5. MỞ RỘNG: THỜI KHÓA BIỂU NÂNG CAO VỚI CSS")
     r_h5.font.name = "Arial"
     r_h5.font.size = Pt(15)
     r_h5.font.color.rgb = RGBColor(15, 23, 42)
     r_h5.bold = True
 
-    p_css_desc = doc.add_paragraph()
-    r_cd = p_css_desc.add_run(
-        "Trong phát triển web hiện đại, thuộc tính border='1' chỉ mang tính chất minh họa ban đầu. "
-        "Để giao diện đạt chuẩn doanh nghiệp (UI/UX), chúng ta áp dụng CSS với các thuộc tính: "
-        "border-collapse: collapse (loại bỏ viền kép), padding rộng rãi, màu sắc tương phản cao và hiệu ứng hover:"
-    )
-    r_cd.font.name = "Arial"
-    r_cd.font.size = Pt(10)
-
-    # Ảnh minh họa 3: Modern CSS
     img3_path = os.path.join(script_dir, "modern_css_styled_table.png")
     if os.path.exists(img3_path):
         p_img3 = doc.add_paragraph()
@@ -422,7 +407,7 @@ def build_report():
         p_cap3 = doc.add_paragraph()
         p_cap3.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_cap3.paragraph_format.space_after = Pt(12)
-        r_cap3 = p_cap3.add_run("Hình 3: So sánh giao diện bảng HTML nguyên bản và bảng được nâng cấp với CSS hiện đại")
+        r_cap3 = p_cap3.add_run("Hình 3: Nâng cấp trực quan bảng thời khóa biểu với màu nền phân biệt ô gộp hàng và gộp cột")
         r_cap3.font.name = "Arial"
         r_cap3.font.size = Pt(9)
         r_cap3.font.italic = True
@@ -439,15 +424,15 @@ def build_report():
     p_conc = doc.add_paragraph()
     r_c = p_conc.add_run(
         "Bài thực hành đã được hoàn thành xuất sắc 100% các tiêu chí yêu cầu:\n"
-        "✓ Xây dựng bảng HTML đầy đủ cấu trúc 4 hàng x 3 cột (Họ và Tên, Tuổi, Lớp).\n"
-        "✓ Sử dụng đúng các thẻ chuẩn ngữ nghĩa: <table>, <tr>, <th>, <td> và thuộc tính border='1'.\n"
-        "✓ Chụp màn hình trình duyệt web minh chứng rõ ràng kết quả hiển thị.\n"
-        "✓ Tài liệu báo cáo đóng gói định dạng file .docx dung lượng nhẹ (< 2 MB) sẵn sàng nộp bài theo đúng quy định."
+        "✓ Xây dựng bảng Thời khóa biểu hoàn chỉnh với 3 cột Thứ, Môn học, Giáo viên.\n"
+        "✓ Áp dụng chính xác rowspan='2' cho ô Thứ Hai và colspan='2' cho ô Nghỉ học.\n"
+        "✓ Bố cục ô logic, không xảy ra hiện tượng tràn viền hay lệch cột.\n"
+        "✓ Chụp màn hình trình duyệt web minh chứng rõ ràng và xuất bản tệp PDF dung lượng nhẹ (< 2 MB) sẵn sàng nộp bài."
     )
     r_c.font.name = "Arial"
     r_c.font.size = Pt(10)
 
-    out_docx = os.path.join(script_dir, "Bao_Cao_Thuc_Hanh_Tao_Bang_HTML.docx")
+    out_docx = os.path.join(script_dir, "Bao_Cao_Thuc_Hanh_Gop_O_Trong_Bang.docx")
     doc.save(out_docx)
     print(f"Report saved: {out_docx}")
 

@@ -1,5 +1,5 @@
-$docxPath = "C:\Users\dathao\.gemini\antigravity-ide\scratch\thuc-hanh-tao-bang-html\Bao_Cao_Thuc_Hanh_Tao_Bang_HTML.docx"
-$pdfPath = "C:\Users\dathao\.gemini\antigravity-ide\scratch\thuc-hanh-tao-bang-html\Bao_Cao_Thuc_Hanh_Tao_Bang_HTML.pdf"
+$docxPath = "C:\Users\dathao\.gemini\antigravity-ide\scratch\thuc-hanh-tao-bang-html\Bao_Cao_Thuc_Hanh_Gop_O_Trong_Bang.docx"
+$pdfPath = "C:\Users\dathao\.gemini\antigravity-ide\scratch\thuc-hanh-tao-bang-html\Bao_Cao_Thuc_Hanh_Gop_O_Trong_Bang.pdf"
 
 try {
     $word = New-Object -ComObject Word.Application

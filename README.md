@@ -1,15 +1,15 @@
-# [Thực hành] Tạo bảng đơn giản với tiêu đề và dữ liệu
+# [Thực hành] Gộp ô trong bảng với rowspan và colspan
 
-[![HTML5](https://img.shields.io/badge/HTML5-Table-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table)
+[![HTML5](https://img.shields.io/badge/HTML5-Rowspan_&_Colspan-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attributes)
 [![Status](https://img.shields.io/badge/Status-Completed-22C55E?style=for-the-badge)](https://github.com/proyctk03-eng/thuc-hanh-tao-bang-html)
-[![Report](https://img.shields.io/badge/File_Format-.DOCX_(195KB)-2563EB?style=for-the-badge&logo=microsoftword&logoColor=white)](Bao_Cao_Thuc_Hanh_Tao_Bang_HTML.docx)
+[![Report](https://img.shields.io/badge/Submission_File-.PDF_(464KB)-DC2626?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](Bao_Cao_Thuc_Hanh_Gop_O_Trong_Bang.pdf)
 [![Demo](https://img.shields.io/badge/Demo-GitHub_Pages-6366F1?style=for-the-badge)](https://proyctk03-eng.github.io/thuc-hanh-tao-bang-html/)
 
 ---
 
 ## 1. Mục Đích & Bài Toán
-- **Mục đích**: Luyện tập tạo bảng cơ bản trong HTML sử dụng các thẻ `<table>`, `<tr>`, `<th>`, `<td>` để hiển thị dữ liệu có cấu trúc.
-- **Bài toán**: Tạo một bảng hiển thị danh sách học sinh với các cột: **Họ và Tên**, **Tuổi**, **Lớp**.
+- **Mục đích**: Luyện tập sử dụng các thuộc tính `rowspan` và `colspan` để gộp ô trong bảng HTML, giúp sắp xếp dữ liệu có cấu trúc hợp lý hơn.
+- **Bài toán**: Tạo bảng hiển thị thông tin thời khóa biểu gồm các cột: **Thứ**, **Môn học**, **Giáo viên**.
 
 ---
 
@@ -20,30 +20,28 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Bảng đơn giản trong HTML</title>
+        <title>Gộp ô trong bảng</title>
     </head>
     <body>
-        <h2>Danh sách học sinh</h2>
+        <h2>Thời khóa biểu</h2>
         <table border="1">
             <tr>
-                <th>Họ và Tên</th>
-                <th>Tuổi</th>
-                <th>Lớp</th>
+                <th>Thứ</th>
+                <th>Môn học</th>
+                <th>Giáo viên</th>
             </tr>
             <tr>
-                <td>Nguyễn Văn A</td>
-                <td>15</td>
-                <td>10A1</td>
+                <td rowspan="2">Thứ Hai</td>
+                <td>Toán</td>
+                <td>Thầy Nam</td>
             </tr>
             <tr>
-                <td>Trần Thị B</td>
-                <td>16</td>
-                <td>11B2</td>
+                <td>Văn</td>
+                <td>Cô Hạnh</td>
             </tr>
             <tr>
-                <td>Lê Văn C</td>
-                <td>17</td>
-                <td>12C3</td>
+                <td>Thứ Ba</td>
+                <td colspan="2">Nghỉ học</td>
             </tr>
         </table>
     </body>
@@ -60,33 +58,31 @@ Theo yêu cầu trong phần **HƯỚNG DẪN NỘP BÀI** (*"Chụp màn hình 
 
 ---
 
-## 4. Sơ Đồ Cấu Trúc Thẻ & So Sánh Nâng Cấp CSS
+## 4. Sơ Đồ Cơ Chế Kỹ Thuật Rowspan vs Colspan
 
-### 4.1. Phân tầng cấu trúc HTML Table
-![HTML Table Architecture](html_table_tags_architecture.png)
+### 4.1. Quy tắc bảo toàn số lượng ô khi dùng Rowspan và Colspan
+![Rowspan and Colspan Architecture](html_table_tags_architecture.png)
 
-### 4.2. So sánh bảng HTML thuần (border="1") và bảng chuẩn hóa CSS
-![Modern CSS Table Comparison](modern_css_styled_table.png)
+### 4.2. So sánh bảng thời khóa biểu HTML gốc và bảng nâng cao CSS
+![Modern Schedule Table](modern_css_styled_table.png)
 
 ---
 
-## 5. Ý Nghĩa & Vai Trò Các Thẻ HTML Table
+## 5. Phân Tích Kỹ Thuật Thuộc Tính
 
-| Thẻ / Thuộc Tính | Ý Nghĩa | Chức Năng Cốt Lõi |
+| Thuộc Tính | Cú Pháp | Ý Nghĩa & Vai Trò Trong Bài |
 |:---|:---|:---|
-| **`<table>`** | Table Element | Thẻ bao bọc cấp cao nhất định nghĩa cấu trúc bảng dữ liệu. |
-| **`border="1"`** | Border Attribute | Thuộc tính quy định độ dày đường viền bao quanh bảng (1 pixel). |
-| **`<tr>`** | Table Row | Định nghĩa một hàng ngang trong bảng. |
-| **`<th>`** | Table Header | Ô tiêu đề cột. Mặc định trình duyệt hiển thị **in đậm** và căn giữa. |
-| **`<td>`** | Table Data | Ô chứa dữ liệu thông thường. Mặc định hiển thị chữ thường và căn lề trái. |
+| **`rowspan="2"`** | `<td rowspan="2">Thứ Hai</td>` | Gộp 2 hàng dọc liên tiếp. Ô `Thứ Hai` trải dài qua 2 môn Toán và Văn. Hàng thứ 2 chỉ cần 2 thẻ `<td>`. |
+| **`colspan="2"`** | `<td colspan="2">Nghỉ học</td>` | Gộp 2 cột ngang liên tiếp. Ô `Nghỉ học` chiếm trọn 2 cột Môn học và Giáo viên của Thứ Ba. |
+| **`border="1"`** | `<table border="1">` | Hiển thị đường viền lưới bao quanh các ô trong bảng. |
 
 ---
 
 ## 6. Hướng Dẫn Nộp File Báo Cáo
-- File báo cáo chính thức được xuất ra định dạng **`.docx`** theo đúng yêu cầu đề bài:
-  👉 **`Bao_Cao_Thuc_Hanh_Tao_Bang_HTML.docx`** (Dung lượng: **195 KB**, đáp ứng giới hạn tối đa 2 MB).
-- File PDF dự phòng:
-  👉 **`Bao_Cao_Thuc_Hanh_Tao_Bang_HTML.pdf`** (Dung lượng: **479 KB**).
+- File báo cáo chính thức được xuất ra định dạng **`.pdf`** theo đúng yêu cầu đề bài:
+  👉 **`Bao_Cao_Thuc_Hanh_Gop_O_Trong_Bang.pdf`** (Dung lượng: **464 KB**, đáp ứng giới hạn tối đa 2 MB).
+- File Word đính kèm:
+  👉 **`Bao_Cao_Thuc_Hanh_Gop_O_Trong_Bang.docx`** (Dung lượng: **205 KB**).
 
 ---
 
